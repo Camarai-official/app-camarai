@@ -7,11 +7,11 @@
     <title>CamarAI - Acceso</title>
     
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="src/img/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="src/img/favicon_io/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="src/img/favicon_io/apple-touch-icon.png">
-    <link rel="manifest" href="src/img/favicon_io/site.webmanifest" crossorigin="use-credentials">
-    <link rel="mask-icon" href="src/img/favicon_io/safari-pinned-tab.svg" color="#554696">
+    <link rel="icon" type="image/png" sizes="32x32" href="./src/img/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./src/img/favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./src/img/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="./src/img/favicon_io/site.webmanifest" crossorigin="use-credentials">
+    <link rel="mask-icon" href="./src/img/favicon_io/safari-pinned-tab.svg" color="#554696">
     
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#554696">
@@ -23,8 +23,7 @@
     <meta name="apple-mobile-web-app-title" content="CamarAI">
     
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <link rel="stylesheet" href="src/styles/main.css">
-    <link rel="stylesheet" href="src/style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet">
@@ -56,9 +55,9 @@
             --color-success: #10b981;
 
             /* Input specific colors for dark mode */
-            --color-input-background-dark: #374151; /* Color oscuro para campos de entrada */
-            --color-input-border-dark: #4b5563;    /* Color oscuro para bordes */
-            --color-card-background-dark: #1f2937; /* Color oscuro para tarjetas */
+            --color-input-background-dark: #374151; /* e.g., Tailwind gray-700 */
+            --color-input-border-dark: #4b5563;    /* e.g., Tailwind gray-600 */
+            --color-card-background-dark: #1f2937; /* e.g., Tailwind gray-800 for cards */
         }
 
         body {
@@ -196,7 +195,6 @@
             display: none; 
             justify-content: center;
             align-items: center;
-            padding: 0.5rem; 
             padding-right: 2rem; 
             align-self: stretch; 
             position: relative;
@@ -315,7 +313,7 @@
             font-weight: 600; /* Aumentado para mejor visibilidad del gradiente */
             font-size: 1.125rem; /* Aumentado el tamaño de la letra */
 
-            /* Estilos de gradiente para texto */
+            /* Estilos del gradiente tomados de .camarai_color y ajustados a tres colores */
             background: linear-gradient(to right, var(--color-primary) 0%, #E879F9 50%, var(--color-primary-light) 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -463,18 +461,15 @@
         /* Media Queries para Responsividad */
         @media (min-width: 1024px) { /* Desktop */
              .auth-container {
-                align-items: stretch; 
+                align-items: stretch;
+                transform: scale(0.85);
+                margin: 0 auto;
              }
             .auth-image {
-                display: flex; 
-            }
-            .auth-content {
-                border-radius: 1rem; 
-                max-width: 28rem; 
-                padding-left: 2rem; 
+                display: flex;
             }
             body {
-                padding: 0; 
+                padding: 0;
                 background-color: #141414 !important; /* Fondo oscuro para animación */
             }
             .animated-background-container {
@@ -482,9 +477,6 @@
             }
             .auth-content::after { /* Mostrar efecto en desktop */
                 display: block;
-            }
-            .logo {
-                height: 8rem; /* Reducido a 0.8 de su tamaño original (10rem) */
             }
         }
 
