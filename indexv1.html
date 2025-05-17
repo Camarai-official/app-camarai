@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#554696">
+    <title>CamarAI - Acceso</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./src/img/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./src/img/favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./src/img/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="./src/img/favicon_io/site.webmanifest" crossorigin="use-credentials">
+    <link rel="mask-icon" href="./src/img/favicon_io/safari-pinned-tab.svg" color="#554696">
+    
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#554696">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#554696">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="CamarAI">
+    
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-primary: #554696;
+            --color-primary-rgb: 85, 70, 150; /* Added for box-shadow */
+            --color-primary-dark: #443775;
+            --color-primary-light: #6657b8;
+            --color-background: #f9fafb; /* Light mode page background */
+            --color-text: #1f2937; /* Light mode text */
+            --color-text-light: #6b7280;
+            --color-white: #ffffff;
+            --color-error: #ef4444;
+            --color-success: #10b981;
+        }
+
+        .dark {
+            --color-primary: #554696; /* Ensuring primary color remains consistent */
+            --color-primary-rgb: 85, 70, 150;
+            --color-primary-dark: #443775;
+            --color-primary-light: #6657b8;
+            --color-background: #111827; /* Dark mode page background */
+            --color-text: #f9fafb; /* Dark mode text (light) */
+            --color-text-light: #9ca3af;
+            --color-white: #ffffff; /* Retain for elements that must be white */
+            --color-error: #ef4444;
+            --color-success: #10b981;
+
+            /* Input specific colors for dark mode */
+            --color-input-background-dark: #374151; /* e.g., Tailwind gray-700 */
+            --color-input-border-dark: #4b5563;    /* e.g., Tailwind gray-600 */
+            --color-card-background-dark: #1f2937; /* e.g., Tailwind gray-800 for cards */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center; 
+            align-items: center;    
+            padding: 1rem; /* Padding general para el body en pantallas pequeñas */
+            box-sizing: border-box;
+            position: relative; /* Para el contexto de apilamiento de z-index */
+        }
+
+        .animated-background-container {
+            display: none; /* Oculto en móviles por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0; 
+            overflow: hidden;
+        }
+
+        a-hole {
+            position: absolute; /* Dentro de .animated-background-container */
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        a-hole:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 2;
+            display: block;
+            width: 150%;
+            height: 140%;
+            background: radial-gradient(ellipse at 50% 55%, transparent 10%, black 50%);
+            transform: translate3d(-50%, -50%, 0);
+            content: "";
+        }
+
+        a-hole:after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 5;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 50% 75%, #a900ff 20%, transparent 75%);
+            mix-blend-mode: overlay;
+            transform: translate3d(-50%, -50%, 0);
+            content: "";
+        }
+
+        @keyframes aura-glow {
+            0% {
+                background-position: 0 100%;
+            }
+            100% {
+                background-position: 0 300%;
+            }
+        }
+
+        a-hole .aura {
+            position: absolute;
+            top: -71.5%;
+            left: 50%;
+            z-index: 3;
+            width: 30%;
+            height: 140%;
+            background: linear-gradient(
+                20deg,
+                #00f8f1,
+                #ffbd1e20 16.5%,
+                #fe848f 33%,
+                #fe848f20 49.5%,
+                #00f8f1 66%,
+                #00f8f160 85.5%,
+                #ffbd1e 100%
+            ) 0 100% / 100% 200%;
+            border-radius: 0 0 100% 100%;
+            filter: blur(50px);
+            mix-blend-mode: plus-lighter;
+            opacity: 0.75;
+            transform: translate3d(-50%, 0, 0);
+            animation: aura-glow 5s infinite linear;
+        }
+
+        a-hole canvas.js-canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 80rem; 
+            position: relative; /* Para asegurar que está encima del fondo animado */
+            z-index: 1; 
+        }
+
+        .auth-image { 
+            flex-grow: 0; 
+            flex-shrink: 0; 
+            display: none; 
+            justify-content: center;
+            align-items: center;
+            padding-right: 2rem; 
+            align-self: stretch; 
+            position: relative;
+        }
+
+        .mobile-frame {
+            width: 400px; 
+            height: 820px; 
+            min-height: 820px; 
+            background-color: #1c1c1e; 
+            border-radius: 60px; 
+            padding: 20px; 
+            box-shadow: 0px 0px 40px rgba(0,0,0,0.4), inset 0 0 0 3px #282828;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; 
+        }
+        
+        .mobile-frame::before { /* Notch */
+            content: '';
+            position: absolute;
+            top: 20px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px; 
+            height: 36px; 
+            background-color: #1c1c1e; 
+            border-bottom-left-radius: 20px; 
+            border-bottom-right-radius: 20px;
+            z-index: 2;
+        }
+
+        .mobile-screen {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://framerusercontent.com/images/77EciliJVU8turb59IhflF0Maug.png?scale-down-to=2048');
+            background-size: cover;
+            background-position: center;
+            border-radius: 40px; 
+            overflow: hidden; 
+        }
+
+        .auth-content { 
+            flex-grow: 0; 
+            flex-shrink: 0; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2.5rem;
+            max-width: 28rem; 
+            width: 100%; 
+            /* background-color: var(--color-white); */ /* Comentado para nuevo estilo */
+            background-color: rgba(255, 255, 255, 0.1); /* Blanco con baja opacidad para modo claro */
+            backdrop-filter: blur(300px); /* Aumentado el desenfoque */
+            -webkit-backdrop-filter: blur(300px); /* Para compatibilidad con Safari y aumentado el desenfoque */
+            border-radius: 1rem; /* Aumentado para esquinas más redondeadas */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            align-self: stretch; 
+            border-left-width: 5px; /* Grosor del borde izquierdo aumentado */
+            border-left-style: solid;
+            border-left-color: var(--color-primary);
+            box-sizing: border-box; 
+            position: relative; /* Asegurar que .auth-content sea el contexto de posicionamiento */
+            overflow: hidden; /* Para que el pseudo-elemento no se salga si es más grande */
+        }
+
+        .auth-content::after {
+            content: "";
+            position: absolute;
+            top: -80px;  /* Ajustar para que el origen esté más arriba */
+            right: -100px; /* Ajustar para que el origen esté más a la derecha */
+            width: 350px;  /* Ancho del resplandor elíptico */
+            height: 250px; /* Altura del resplandor elíptico */
+            background: radial-gradient(ellipse at 100% 0%, 
+                rgba(var(--color-primary-rgb), 0.35) 0%, 
+                rgba(var(--color-primary-rgb), 0.15) 40%, 
+                transparent 70%);
+            border-radius: 50%; /* Aunque sea elipse, esto ayuda a suavizar bordes si es visible */
+            z-index: 0; 
+            pointer-events: none; 
+            display: none; /* Oculto por defecto, se muestra en desktop/tablet */
+        }
+
+        .dark .auth-content {
+            /* background-color: var(--color-card-background-dark); */ /* Comentado para nuevo estilo */
+            background-color: rgba(31, 41, 55, 0.25); /* Color de tarjeta oscuro con opacidad moderada */
+            /* backdrop-filter y border-radius ya se heredan o se aplican desde .auth-content, 
+               pero se puede ser explícito si se prefiere o si hay overrides.
+               Por ahora, confiamos en la herencia/aplicación de .auth-content.
+               Si es necesario, se pueden añadir aquí:
+               backdrop-filter: blur(10px);
+               -webkit-backdrop-filter: blur(10px);
+            */
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .logo {
+            height: 10rem; 
+            width: auto;
+            max-width: 100%; 
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--color-text-light);
+            width: 100%;
+        }
+        
+        .dark .auth-tabs {
+            border-bottom-color: var(--color-text-light);
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            /* color: var(--color-text-light); // Originalmente aquí, ahora es fallback */
+            transition: all 0.3s ease;
+            font-weight: 600; /* Aumentado para mejor visibilidad del gradiente */
+            font-size: 1.125rem; /* Aumentado el tamaño de la letra */
+
+            /* Estilos del gradiente tomados de .camarai_color y ajustados a tres colores */
+            background: linear-gradient(to right, var(--color-primary) 0%, #E879F9 50%, var(--color-primary-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            /* Fallback color para pestañas (principalmente la inactiva) */
+            color: var(--color-text-light);
+        }
+
+        .auth-tab.active {
+            /* El gradiente de .auth-tab se aplica aquí también */
+            border-bottom: 2px solid var(--color-primary);
+            margin-bottom: -2px;
+            /* Fallback color específico para la pestaña activa */
+            color: var(--color-primary);
+        }
+
+        .auth-form {
+            display: none;
+            width: 100%;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem; 
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            background-color: var(--color-white);
+            color: var(--color-text);
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2);
+        }
+
+        .dark .form-input {
+            background-color: var(--color-input-background-dark);
+            color: var(--color-text);
+            border-color: var(--color-input-border-dark);
+        }
+
+        .dark .form-input:focus {
+            border-color: var(--color-primary); 
+            box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.25);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        .auth-links {
+            margin-top: 1.25rem; 
+            text-align: center;
+        }
+
+        .auth-link {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+
+        .social-login {
+            margin-top: 1.5rem; 
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        .dark .social-login {
+             border-top-color: var(--color-input-border-dark);
+        }
+
+        .social-button {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            background-color: var(--color-white);
+            color: #374151;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem; 
+        }
+        
+        .dark .social-button {
+            background-color: var(--color-input-background-dark);
+            border-color: var(--color-input-border-dark);
+            color: var(--color-text);
+        }
+
+        .social-button:hover {
+            background-color: #f9fafb;
+        }
+        .dark .social-button:hover {
+            background-color: #4b5563;
+        }
+
+        .social-icon {
+            margin-right: 0.75rem;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        /* Media Queries para Responsividad */
+        @media (min-width: 1024px) { /* Desktop */
+             .auth-container {
+                align-items: stretch;
+                transform: scale(0.85);
+                margin: 0 auto;
+             }
+            .auth-image {
+                display: flex;
+            }
+            body {
+                padding: 0;
+                background-color: #141414 !important; /* Fondo oscuro para animación */
+            }
+            .animated-background-container {
+                display: block; /* Mostrar animación */
+            }
+            .auth-content::after { /* Mostrar efecto en desktop */
+                display: block;
+            }
+        }
+
+        @media (max-width: 1023px) and (min-width: 768px) { /* Tablets */
+             .auth-container {
+                align-items: center; 
+            }
+            .logo {
+                height: 8rem;
+            }
+            .auth-image { 
+                display: none;
+            }
+            .auth-content {
+                max-width: 28rem; 
+                border-radius: 1rem; 
+                margin: 2rem auto; 
+                align-self: auto; 
+            }
+            body {
+                padding: 0; /* Quitar padding para que el fondo animado cubra todo */
+                background-color: #141414 !important; /* Fondo oscuro para animación */
+            }
+            .animated-background-container {
+                display: block; /* Mostrar animación */
+            }
+            .auth-content::after { /* Mostrar efecto en tablet */
+                display: block;
+            }
+        }
+
+        @media (max-width: 767px) { /* Móviles */
+             .auth-container {
+                align-items: center; 
+            }
+            body { 
+                padding: 0;
+            }
+            .auth-image {
+                 display: none; 
+            }
+            .auth-content {
+                padding: 1.5rem; 
+                margin: 0; 
+                width: 100%; 
+                max-width: 100%; 
+                min-height: 100vh; 
+                box-shadow: none; 
+                border-radius: 0; 
+                align-self: auto; 
+            }
+            .logo-container{
+                margin-bottom: 1.5rem;
+            }
+            .logo {
+                height: 6rem;
+            }
+            .auth-tabs {
+                margin-bottom: 1.5rem;
+            }
+            .form-group {
+                margin-bottom: 1rem;
+            }
+            .submit-button,
+            .social-button {
+                padding: 0.65rem 1rem;
+                font-size: 0.9rem;
+            }
+            .social-login {
+                margin-top: 1rem;
+                padding-top: 1rem;
+            }
+            .social-button {
+                margin-bottom: 0.75rem;
+            }
+            .auth-links {
+                margin-top: 1rem;
+            }
+            .animated-background-container { /* Asegurar que está oculto en móviles */
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) { /* Móviles muy pequeños */
+            .logo {
+                height: 5rem;
+            }
+            .auth-content {
+                padding: 1rem;
+            }
+            .auth-tab{
+                padding: 0.75rem;
+                font-size:0.9rem;
+            }
+             .form-label {
+                font-size: 0.8rem;
+            }
+            .form-input {
+                font-size: 0.9rem;
+                padding: 0.6rem 0.8rem;
+            }
+        }
+
+        .error-message, .success-message {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .auth-form.active {
+            animation: fadeIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background-container">
+        <a-hole>
+            <canvas class="js-canvas"></canvas>
+            <div class="aura"></div>
+        </a-hole>
+    </div>
+    <div class="auth-container">
+        <div class="auth-image">
+            <div class="mobile-frame">
+                <div class="mobile-screen"></div>
+            </div>
+        </div>
+        <div class="auth-content">
+            <div class="logo-container">
+                <img src="src/img/logo.png" alt="CamarAI Logo" class="logo">
+            </div>
+
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-tab="login">Iniciar Sesión</div>
+                <div class="auth-tab" data-tab="register">Registrarse</div>
+            </div>
+
+            <!-- Formulario de Login -->
+            <form class="auth-form active" id="login-form">
+                <div class="form-group">
+                    <label for="login-email" class="form-label">Correo electrónico</label>
+                    <input type="email" id="login-email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password" class="form-label">Contraseña</label>
+                    <input type="password" id="login-password" class="form-input" required>
+                </div>
+                <button type="submit" class="submit-button">Iniciar Sesión</button>
+                <div class="auth-links">
+                    <a href="#" class="auth-link">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-button">
+                        <img src="https://cdn.iconscout.com/icon/free/png-256/free-google-icon-download-in-svg-png-gif-file-formats--logo-social-media-1507807.png" alt="Google" class="social-icon">
+                        Continuar con Google
+                    </button>
+                    <button type="button" class="social-button">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png" alt="Microsoft" class="social-icon">
+                        Continuar con Microsoft
+                    </button>
+                </div>
+            </form>
+
+            <!-- Formulario de Registro -->
+            <form class="auth-form" id="register-form">
+                <div class="form-group">
+                    <label for="register-name" class="form-label">Nombre completo</label>
+                    <input type="text" id="register-name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email" class="form-label">Correo electrónico</label>
+                    <input type="email" id="register-email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password" class="form-label">Contraseña</label>
+                    <input type="password" id="register-password" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password" class="form-label">Confirmar contraseña</label>
+                    <input type="password" id="register-confirm-password" class="form-input" required>
+                </div>
+                <button type="submit" class="submit-button">Crear cuenta</button>
+
+                <div class="social-login">
+                    <button type="button" class="social-button">
+                        <img src="https://cdn.iconscout.com/icon/free/png-256/free-google-icon-download-in-svg-png-gif-file-formats--logo-social-media-1507807.png" alt="Google" class="social-icon">
+                        Registrarse con Google
+                    </button>
+                    <button type="button" class="social-button">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png" alt="Microsoft" class="social-icon">
+                        Registrarse con Microsoft
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Manejo de pestañas
+        const tabs = document.querySelectorAll('.auth-tab');
+        const forms = document.querySelectorAll('.auth-form');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                forms.forEach(f => f.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.querySelector(`#${tab.dataset.tab}-form`).classList.add('active');
+            });
+        });
+
+        // Manejo del tema oscuro: Leer desde localStorage o usar preferencia del sistema
+        const htmlElement = document.documentElement;
+        const savedTheme = localStorage.getItem('theme');
+
+        function applyTheme(theme) {
+            htmlElement.classList.toggle('dark', theme === 'dark');
+        }
+
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+            applyTheme(prefersDark.matches ? 'dark' : 'light');
+            prefersDark.addEventListener('change', (e) => {
+                 applyTheme(e.matches ? 'dark' : 'light');
+            });
+        }
+
+        // Manejo de formularios (Placeholder)
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                console.log('Iniciando sesión...');
+            });
+        }
+
+        if (registerForm) {
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                console.log('Registrando usuario...');
+            });
+        }
+    </script>
+
+</body>
+</html> 
