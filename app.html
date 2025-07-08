@@ -1,1 +1,1093 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#554696">
+    <title>CamarAI</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./src/img/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./src/img/favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./src/img/favicon_io/apple-touch-icon.png">
+    <link rel="manifest" href="./src/img/favicon_io/site.webmanifest" crossorigin="use-credentials">
+    <link rel="mask-icon" href="./src/img/favicon_io/safari-pinned-tab.svg" color="#554696">
+    
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#554696">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#554696">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="CamarAI">
+    <meta name="application-name" content="CamarAI">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="Camarero Inteligente de eventos y restaurantes">
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#554696">
+    <meta name="msapplication-TileImage" content="./src/img/favicon_io/mstile-144x144.png">
+    <meta name="msapplication-config" content="./src/img/favicon_io/browserconfig.xml">
+    
+    <!-- Splash Screens para iOS -->
+    <link rel="apple-touch-startup-image" href="./src/img/favicon_io/splash/apple-splash-2048-2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="./src/img/favicon_io/splash/apple-splash-1668-2388.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="./src/img/favicon_io/splash/apple-splash-1536-2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="./src/img/favicon_io/splash/apple-splash-1125-2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="./src/img/favicon_io/splash/apple-splash-1242-2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" role="navigation" id="sidebar">
+        <!-- Selector de restaurante -->
+        <div class="team-selector">
+            <button class="team-button" id="team-selector-button" aria-expanded="false" aria-haspopup="true">
+                <span class="team-icon">
+                    <img src="src/img/claro.svg" alt="Logo" class="team-logo" width="20" height="20">
+                </span>
+                <span class="team-name">Camarai</span>
+                <svg class="team-chevron" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            
+            <!-- Menú desplegable de restaurantes -->
+            <div class="team-menu" id="team-menu" role="menu" aria-orientation="vertical" aria-labelledby="team-selector-button">
+                <div class="team-menu-header">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Ajustes</span>
+                </div>
+                <div class="team-menu-section">
+                    <h3>Tus restaurantes</h3>
+                    <a href="#" class="team-menu-item active" role="menuitem">
+                        <span class="team-menu-icon">
+                            <img src="src/img/claro.svg" alt="Logo" class="team-logo" width="16" height="16">
+                        </span>
+                        <span>Camarai</span>
+                    </a>
+                    <a href="#" class="team-menu-item" role="menuitem">
+                        <span class="team-menu-icon be-icon">BE</span>
+                        <span>Puerta del Mar</span>
+                    </a>
+                </div>
+                <div class="team-menu-footer">
+                    <button class="new-team-button" role="menuitem">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                        </svg>
+                        <span>Restaurante...</span>
+                    </button>
+                </div>
+            </div>
+        </div>
 
+        <nav class="sidebar-nav">
+            <!-- Nav DAshboard -->
+            <div id="nav-dashboard" class="nav-section">
+                <a href="#" class="nav-item active" aria-current="page">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <span class="nav-item-text">Inicio</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                        <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                        <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                        <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                        <circle cx="6.5" cy="6.5" r="1.5"></circle>
+                        <circle cx="17.5" cy="6.5" r="1.5"></circle>
+                        <circle cx="6.5" cy="17.5" r="1.5"></circle>
+                        <circle cx="17.5" cy="17.5" r="1.5"></circle>
+                    </svg>
+                    <span class="nav-item-text">Plano de mesas</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    </svg>
+                    <span class="nav-item-text">Tienda</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
+                    </svg>
+                    <span class="nav-item-text">QR</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="nav-item-text">Ubicaciones</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <span class="nav-item-text">Entidades Legales</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <span class="nav-item-text">Marcas virtuales</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+                    </svg>
+                    <span class="nav-item-text">Promociones</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="nav-item-text">Horarios</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <span class="nav-item-text">KDS</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    <span class="nav-item-text">WhatsApp</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span class="nav-item-text">Instagram</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 2h-3a5 5 0 00-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z"></path>
+                    </svg>
+                    <span class="nav-item-text">Facebook</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                    </svg>
+                    <span class="nav-item-text">WebChat</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="nav-item-text">Google Maps</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                    </svg>
+                    <span class="nav-item-text">Impresoras</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                    <span class="nav-item-text">Equipo</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+                    </svg>
+                    <span class="nav-item-text">Promociones</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="nav-item-text">Horarios</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <span class="nav-item-text">Eventos</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    </svg>
+                    <span class="nav-item-text">Órdenes</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="nav-item-text">Ajustes</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <span class="nav-item-text">Facturación</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="nav-item-text">Ajustes</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v16h16"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 20l7-7 3 3 6-6"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 10v6"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 12v4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 14v2"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 8v8"></path>
+                    </svg>
+                    <span class="nav-item-text">Reportes</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h3 class="nav-section-title">Próximos eventos</h3>
+                <a href="#" class="nav-item">
+                    <span class="nav-item-text">San Valentín</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-item-text">Comunión Sandra</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-item-text">Fiestas del Pueblo</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-item-text">Noche de San Juan</span>
+                </a>
+            </div>
+
+            <div class="nav-section bottom-section">
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="nav-item-text">Soporte</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <span class="nav-item-text">Registro de cambios</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Perfil de usuario -->
+        <div class="user-profile-container">
+            <button class="user-profile-button" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <img src="https://fenixbinario.com/assets/img/fenix-freelance.jpg" 
+                     alt="Foto de perfil del usuario" 
+                     class="user-avatar"
+                     width="32"
+                     height="32"
+                     loading="lazy">
+                <div class="user-info">
+                    <span class="user-name">Fénix</span>
+                    <span class="user-email">fenix@camarai.es</span>
+                </div>
+                <svg class="user-menu-arrow" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            
+            <!-- Submenú del usuario -->
+            <div class="user-submenu" id="user-submenu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
+                <a href="#" class="submenu-item" role="menuitem">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                    </svg>
+                    Mi cuenta
+                </a>
+                <a href="#" class="submenu-item" role="menuitem">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                    </svg>
+                    Política de privacidad
+                </a>
+                <a href="#" class="submenu-item" role="menuitem">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
+                    </svg>
+                    Enviar comentarios
+                </a>
+                <button class="submenu-item theme-toggle-button" id="theme-toggle" role="menuitem">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 22 22" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m-9-9h1m3.4-6.4l.7.7m12.1-.7l-.7.7M6.3 17.7l-.7.7M20 12h-1m-4 0a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 22 22" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646"/>
+                    </svg>
+                    <span class="theme-text">Modo claro</span>
+                </button>
+                <a href="#" class="submenu-item" role="menuitem">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+                    </svg>
+                    Cerrar sesión
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Botón de menú móvil -->
+    <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+
+    <!-- Overlay para menú móvil -->
+    <div id="sidebar-overlay" class="sidebar-overlay" role="presentation"></div>
+
+    <div class="app-container">
+        <!-- Contenido principal -->
+        <main class="main-content" role="main">
+            <header class="header camarai-container">
+                <h1 class="camarai_color">Buenos días, Fénix</h1>
+            </header>
+
+            <!-- Filtros y Exportación -->
+            <section class="section-style" aria-labelledby="filters-heading">
+                <h2 id="filters-heading">Filtros y Reportes</h2>
+                <div class="filters-container">
+                    <div class="filters-group">
+                        <label for="date-range" class="filter-label">Rango de fechas</label>
+                        <div class="date-filter">
+                            <select id="date-range" class="filter-select">
+                                <option value="today">Hoy</option>
+                                <option value="yesterday">Ayer</option>
+                                <option value="7" selected>Últimos 7 días</option>
+                                <option value="30">Últimos 30 días</option>
+                                <option value="thisMonth">Este mes</option>
+                                <option value="Month">Mes anterior</option>
+                                <option value="custom">Personalizado</option>
+                            </select>
+                            <div id="custom-dates" class="custom-dates" style="display: none;">
+                                <input type="date" id="start-date" class="date-input" aria-label="Fecha inicial">
+                                <span class="date-separator">-</span>
+                                <input type="date" id="end-date" class="date-input" aria-label="Fecha final">
+                                <button id="apply-dates" class="filter-btn">Aplicar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="export-group">
+                        <span class="filter-label">Exportar reporte general</span>
+                        <div class="export-buttons">
+                            <button id="export-dashboard-csv" class="export-btn">CSV</button>
+                            <button id="export-dashboard-xls" class="export-btn">XLS</button>
+                            <button id="export-dashboard-pdf" class="export-btn">PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-style" aria-labelledby="stats-heading">
+                <h2 id="stats-heading" class="visually-hidden">Estadísticas generales</h2>
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <p class="stat-value">€2.6M</p>
+                            <p class="stat-label">Ingresos totales</p>
+                            <span class="stat-percentage positive">+4.5% respecto a la semana pasada</span>
+                        </div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <p class="stat-value">€455</p>
+                            <p class="stat-label">Valor medio de pedido</p>
+                            <span class="stat-percentage negative">-0.5% respecto a la semana pasada</span>
+                        </div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <p class="stat-value">5,888</p>
+                            <p class="stat-label">Entradas vendidas</p>
+                            <span class="stat-percentage positive">+4.5% respecto a la semana pasada</span>
+                        </div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <p class="stat-value">823,067</p>
+                            <p class="stat-label">Visitas a la página</p>
+                            <span class="stat-percentage positive">+21.2% respecto a la semana pasada</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sección de Ocupación de Mesas -->
+            <section class="section-style" aria-labelledby="ocupacion-mesas-heading">
+                <h2 id="ocupacion-mesas-heading">Ocupación de Mesas</h2>
+                <div class="stats-grid">
+                    <!-- Card: Total de Mesas -->
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <h3 class="stat-label">Total de Mesas</h3>
+                            <div class="chart-container" style="position: relative; height: 200px; width: 200px; margin: 0 auto;">
+                                <canvas id="mesas-ocupacion-chart" aria-label="Gráfico de ocupación de mesas" role="img"></canvas>
+                            </div>
+                            <div class="stat-details">
+                                <div class="stat-detail-item">
+                                    <span class="stat-dot" style="background-color: var(--color-text-light)"></span>
+                                    <span class="stat-detail-text">Mesas vacías: 35/35 (100%)</span>
+                                </div>
+                                <div class="stat-detail-item">
+                                    <span class="stat-dot" style="background-color: var(--color-primary)"></span>
+                                    <span class="stat-detail-text">Mesas ocupadas: 0/35 (0%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card: Mesas por Zona -->
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <h3 class="stat-label">Mesas por Zona</h3>
+                            <div class="chart-container" style="position: relative; height: 200px; width: 200px; margin: 0 auto;">
+                                <canvas id="mesas-zona-chart" aria-label="Gráfico de mesas por zona" role="img"></canvas>
+                            </div>
+                            <div class="stat-details">
+                                <div class="stat-detail-item">
+                                    <span class="stat-dot" style="background-color: var(--color-primary)"></span>
+                                    <span class="stat-detail-text">Terraza: 15 mesas</span>
+                                </div>
+                                <div class="stat-detail-item">
+                                    <span class="stat-dot" style="background-color: var(--color-text-light)"></span>
+                                    <span class="stat-detail-text">Interior: 20 mesas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card: Tiempo Medio de Ocupación -->
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <h3 class="stat-label">Tiempo Medio de Ocupación</h3>
+                            <div class="chart-container" style="position: relative; height: 200px; width: 200px; margin: 0 auto;">
+                                <canvas id="tiempo-ocupacion-chart" aria-label="Gráfico de tiempo medio de ocupación" role="img"></canvas>
+                            </div>
+                            <div class="stat-details">
+                                <div class="stat-detail-item">
+                                    <span class="stat-dot" style="background-color: var(--color-primary)"></span>
+                                    <span class="stat-detail-text">Tiempo medio: 1h 45min</span>
+                                </div>
+                                <div class="stat-detail-item">
+                                    <span class="stat-dot" style="background-color: var(--color-text-light)"></span>
+                                    <span class="stat-detail-text">Rotación: 4.5 veces/día</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card: Eficiencia de Rotación -->
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <h3 class="stat-label">Eficiencia de Rotación</h3>
+                            <div class="chart-container" style="position: relative; height: 200px; width: 200px; margin: 0 auto;">
+                                <canvas id="eficiencia-rotacion-chart" aria-label="Gráfico de eficiencia de rotación" role="img"></canvas>
+                            </div>
+                            <div class="stat-details">
+                                <div class="stat-detail-item">
+                                    <span class="stat-dot" style="background-color: var(--color-primary)"></span>
+                                    <span class="stat-detail-text">Eficiencia actual: 78%</span>
+                                </div>
+                                <div class="stat-detail-item">
+                                    <span class="stat-dot" style="background-color: var(--color-text-light)"></span>
+                                    <span class="stat-detail-text">Objetivo: 85%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sección de Ocupación Horaria -->
+            <section class="section-style" aria-labelledby="ocupacion-horaria-heading">
+                <h2 id="ocupacion-horaria-heading">Ocupación Horaria</h2>
+                <div class="flex justify-end items-center gap-2 mb-2 pr-2">
+                    <button id="export-horaria-image" class="export-btn">PNG</button>
+                    <button id="export-horaria-csv" class="export-btn">CSV</button>
+                    <button id="export-horaria-xls" class="export-btn">XLS</button>
+                </div>
+                <div class="table-container" style="overflow-x:auto;">
+                    <canvas id="ocupacion-horaria-chart" height="240" aria-label="Gráfico de ocupación horaria" role="img"></canvas>
+                </div>
+                <div class="stat-details mt-4">
+                    <div class="stat-detail-item">
+                        <span class="stat-dot" style="background-color: var(--color-primary)"></span>
+                        <span class="stat-detail-text">Hora pico: 14:00 - 15:00 (85% ocupación)</span>
+                    </div>
+                    <div class="stat-detail-item">
+                        <span class="stat-dot" style="background-color: var(--color-text-light)"></span>
+                        <span class="stat-detail-text">Hora valle: 17:00 - 18:00 (35% ocupación)</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Nueva sección de gráfico -->
+            <section class="section-style" aria-labelledby="chart-heading">
+                <h2 id="chart-heading">Dinero ganado</h2>
+                <div class="flex justify-end items-center gap-2 mb-2 pr-2">
+                    <button id="export-chart-image" class="export-btn">PNG</button>
+                    <button id="export-chart-csv" class="export-btn">CSV</button>
+                    <button id="export-chart-xls" class="export-btn">XLS</button>
+                </div>
+                <div class="table-container" style="overflow-x:auto;">
+                    <canvas id="earnings-chart" height="240" aria-label="Gráfico de dinero ganado" role="img"></canvas>
+                </div>
+            </section>
+
+            <!-- Sección de Ingresos -->
+            <section class="section-style" aria-labelledby="income-heading">
+                <h2 id="income-heading">Ingresos</h2>
+                <div class="flex justify-end items-center gap-2 mb-2 pr-2">
+                    <button id="export-income-image" class="export-btn">PNG</button>
+                    <button id="export-income-csv" class="export-btn">CSV</button>
+                    <button id="export-income-xls" class="export-btn">XLS</button>
+                </div>
+                <div class="table-container" style="overflow-x:auto;">
+                    <canvas id="income-chart" height="240" aria-label="Gráfico de ingresos" role="img"></canvas>
+                </div>
+            </section>
+
+            <section class="section-style" aria-labelledby="orders-heading">
+                <h2 id="orders-heading">Órdenes recientes</h2>
+                <div class="table-container"> 
+                    <p class="table-scroll-hint">Desliza horizontalmente para ver más contenido →</p>
+                    <div id="loading-spinner" class="loading-spinner" role="status" aria-hidden="true"></div>
+                    <div id="error-message" class="error-message" role="alert"></div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Número de orden</th>
+                                <th scope="col">Fecha de compra</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Evento</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                            <!-- Las filas se llenarán con JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Sección de KPIs Mensuales -->
+            <section class="section-style monthly-kpis" aria-labelledby="monthly-kpis-heading">
+                <h2 id="monthly-kpis-heading">KPIs Mensuales</h2>
+                <div class="stats-grid monthly-stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <p class="stat-value">€45.2K</p>
+                            <p class="stat-label">Ingresos Recurrentes Mensuales (MRR)</p>
+                            <span class="stat-percentage positive">+8.3% respecto al mes anterior</span>
+                        </div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <p class="stat-value">€1.2K</p>
+                            <p class="stat-label">Ingresos por Cliente</p>
+                            <span class="stat-percentage positive">+5.2% respecto al mes anterior</span>
+                        </div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <p class="stat-value">12.5%</p>
+                            <p class="stat-label">Tasa de Crecimiento Mensual</p>
+                            <span class="stat-percentage positive">+2.1% respecto al mes anterior</span>
+                        </div>
+                    </article>
+                </div>
+                <div class="table-container" style="overflow-x:auto;">
+                    <canvas id="monthly-kpis-chart" height="240" aria-label="Gráfico de KPIs mensuales" role="img"></canvas>
+                </div>
+            </section>
+
+            <!-- Sección de KPIs Anuales -->
+            <section class="section-style annual-kpis" aria-labelledby="annual-kpis-heading">
+                <h2 id="annual-kpis-heading">KPIs Anuales</h2>
+                <div class="stats-grid annual-stats-grid">
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <p class="stat-value">€542.4K</p>
+                            <p class="stat-label">Ingresos Anuales</p>
+                            <span class="stat-percentage positive">+15.8% respecto al año anterior</span>
+                        </div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <p class="stat-value">18.3%</p>
+                            <p class="stat-label">Tasa de Crecimiento Anual</p>
+                            <span class="stat-percentage positive">+3.2% respecto al año anterior</span>
+                        </div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-header">
+                            <p class="stat-value">€67.8K</p>
+                            <p class="stat-label">Ingresos por Empleado</p>
+                            <span class="stat-percentage positive">+7.5% respecto al año anterior</span>
+                        </div>
+                    </article>
+                </div>
+                <div class="table-container" style="overflow-x:auto;">
+                    <canvas id="annual-kpis-chart" height="240" aria-label="Gráfico de KPIs anuales" role="img"></canvas>
+                </div>
+            </section>
+
+            <!-- Sección de Productos -->
+            <section class="section-style" aria-labelledby="productos-heading">
+                <h2 id="productos-heading">Mis Productos</h2>
+                <div class="module-grid">
+                    <!-- TPV Módulo -->
+                    <article class="module-card active">
+                        <div class="module-header">
+                            <h3 class="module-title">TPV</h3>
+                            <button class="toggle-switch active" aria-pressed="true" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar TPV</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Sistema de punto de venta para gestión de mesas, pedidos y pagos en tu local.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Gestión de mesas</span>
+                                <span class="module-feature">Múltiples terminales</span>
+                                <span class="module-feature">Control de stock</span>
+                            </div>
+                            <a href="#" class="module-link">Configurar TPV</a>
+                        </div>
+                    </article>
+
+                    <!-- Tienda Online Módulo -->
+                    <article class="module-card active">
+                        <div class="module-header">
+                            <h3 class="module-title">Tienda Online</h3>
+                            <button class="toggle-switch active" aria-pressed="true" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar Tienda Online</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Sitio web con tu menú para pedidos a domicilio y recogida en local.</p>
+                            <div class="module-features">
+                                <span class="module-feature">SEO optimizado</span>
+                                <span class="module-feature">Pagos online</span>
+                                <span class="module-feature">Personalizable</span>
+                            </div>
+                            <a href="#" class="module-link">Configurar Tienda</a>
+                        </div>
+                    </article>
+
+                    <!-- QR Ordering Módulo -->
+                    <article class="module-card">
+                        <div class="module-header">
+                            <h3 class="module-title">QR Ordering</h3>
+                            <button class="toggle-switch" aria-pressed="false" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar QR Ordering</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Permite a tus clientes pedir desde la mesa escaneando un código QR.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Reduce esperas</span>
+                                <span class="module-feature">Minimiza errores</span>
+                                <span class="module-feature">Pago desde móvil</span>
+                            </div>
+                            <a href="#" class="module-link">Activar QR Ordering</a>
+                        </div>
+                    </article>
+
+                    <!-- Reservas Módulo -->
+                    <article class="module-card active">
+                        <div class="module-header">
+                            <h3 class="module-title">Reservas</h3>
+                            <button class="toggle-switch active" aria-pressed="true" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar Reservas</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Sistema de reservas online para gestionar la ocupación de tu local.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Confirmación automática</span>
+                                <span class="module-feature">Gestión de depósitos</span>
+                                <span class="module-feature">Integración con Google</span>
+                            </div>
+                            <a href="#" class="module-link">Configurar Reservas</a>
+                        </div>
+                    </article>
+
+                    <!-- Integrador Delivery Módulo -->
+                    <article class="module-card">
+                        <div class="module-header">
+                            <h3 class="module-title">Integrador Delivery</h3>
+                            <button class="toggle-switch" aria-pressed="false" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar Integrador Delivery</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Gestiona pedidos de Glovo, Uber Eats y otras plataformas en un solo lugar.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Centraliza pedidos</span>
+                                <span class="module-feature">Impresión automática</span>
+                                <span class="module-feature">Sincronización de menús</span>
+                            </div>
+                            <a href="#" class="module-link">Activar Integrador</a>
+                        </div>
+                    </article>
+
+                    <!-- KDS Módulo -->
+                    <article class="module-card">
+                        <div class="module-header">
+                            <h3 class="module-title">KDS</h3>
+                            <button class="toggle-switch" aria-pressed="false" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar KDS</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Sistema de Pantallas de Cocina que reemplaza las impresoras y comandas en papel con pantallas interactivas.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Pantallas táctiles</span>
+                                <span class="module-feature">Sin papel</span>
+                                <span class="module-feature">Tiempo real</span>
+                                <span class="module-feature">Estadísticas</span>
+                            </div>
+                            <a href="#" class="module-link">Activar KDS</a>
+                        </div>
+                    </article>
+
+                    <!-- WhatsApp IA Módulo -->
+                    <article class="module-card">
+                        <div class="module-header">
+                            <h3 class="module-title">CamarAI Whatsapp</h3>
+                            <button class="toggle-switch" aria-pressed="false" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar IA Whatsapp</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Asistente virtual inteligente que gestiona reservas, pedidos y consultas de clientes a través de WhatsApp las 24/7.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Respuestas automáticas</span>
+                                <span class="module-feature">Gestión de reservas</span>
+                                <span class="module-feature">Pedidos online</span>
+                                <span class="module-feature">Multiidioma</span>
+                                <span class="module-feature">Análisis de conversaciones</span>
+                            </div>
+                            <a href="#" class="module-link">Activar WhatsApp IA</a>
+                        </div>
+                    </article>
+
+                    <!-- Instagram IA Módulo -->
+                    <article class="module-card">
+                        <div class="module-header">
+                            <h3 class="module-title">CamarAI Instagram</h3>
+                            <button class="toggle-switch" aria-pressed="false" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar IA Instagram</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Gestiona automáticamente tu presencia en Instagram con contenido personalizado, respuestas a DMs y análisis de engagement.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Generación de contenido</span>
+                                <span class="module-feature">Respuestas a DMs</span>
+                                <span class="module-feature">Hashtags optimizados</span>
+                                <span class="module-feature">Programación posts</span>
+                                <span class="module-feature">Análisis de engagement</span>
+                            </div>
+                            <a href="#" class="module-link">Activar Instagram IA</a>
+                        </div>
+                    </article>
+
+                    <!-- Facebook IA Módulo -->
+                    <article class="module-card">
+                        <div class="module-header">
+                            <h3 class="module-title">CamarAI Facebook</h3>
+                            <button class="toggle-switch" aria-pressed="false" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar IA Facebook</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Automatiza tu presencia en Facebook con gestión inteligente de página, eventos, reseñas y mensajes del Messenger.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Gestión de eventos</span>
+                                <span class="module-feature">Respuestas Messenger</span>
+                                <span class="module-feature">Gestión de reseñas</span>
+                                <span class="module-feature">Publicaciones automáticas</span>
+                                <span class="module-feature">Análisis de audiencia</span>
+                            </div>
+                            <a href="#" class="module-link">Activar Facebook IA</a>
+                        </div>
+                    </article>
+
+                    <!-- Web IA Módulo -->
+                    <article class="module-card">
+                        <div class="module-header">
+                            <h3 class="module-title">CamarAI WEB</h3>
+                            <button class="toggle-switch" aria-pressed="false" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar IA WEB</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Integra inteligencia artificial en tu sitio web para ofrecer una experiencia personalizada y automatizada a tus clientes 24/7.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Chat en vivo IA</span>
+                                <span class="module-feature">Recomendaciones menú</span>
+                                <span class="module-feature">Reservas inteligentes</span>
+                                <span class="module-feature">SEO automático</span>
+                                <span class="module-feature">Personalización UX</span>
+                                <span class="module-feature">Análisis predictivo</span>
+                            </div>
+                            <a href="#" class="module-link">Activar Web IA</a>
+                        </div>
+                    </article>
+
+                    <!-- Impresoras Módulo -->
+                    <article class="module-card">
+                        <div class="module-header">
+                            <h3 class="module-title">Gestión de Impresoras</h3>
+                            <button class="toggle-switch" aria-pressed="false" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar Gestión de Impresoras</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Sistema centralizado para gestionar todas las impresoras del restaurante, monitorizar su estado y configurar plantillas de impresión.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Estado en tiempo real</span>
+                                <span class="module-feature">Múltiples formatos</span>
+                                <span class="module-feature">Plantillas personalizadas</span>
+                                <span class="module-feature">Impresión remota</span>
+                                <span class="module-feature">Alertas de mantenimiento</span>
+                                <span class="module-feature">Estadísticas de uso</span>
+                            </div>
+                            <a href="#" class="module-link">Configurar Impresoras</a>
+                        </div>
+                    </article>
+
+                    <!-- Google Maps Reseñas Módulo -->
+                    <article class="module-card">
+                        <div class="module-header">
+                            <h3 class="module-title">CamarAI Maps</h3>
+                            <button class="toggle-switch" aria-pressed="false" role="switch">
+                                <span class="toggle-slider"></span>
+                                <span class="visually-hidden">Activar/Desactivar Gestión de Reseñas Google Maps</span>
+                            </button>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">Gestiona inteligentemente las reseñas de Google Maps con respuestas automáticas personalizadas y análisis detallado del feedback de los clientes.</p>
+                            <div class="module-features">
+                                <span class="module-feature">Respuestas automáticas IA</span>
+                                <span class="module-feature">Análisis de sentimiento</span>
+                                <span class="module-feature">Alertas de reseñas</span>
+                                <span class="module-feature">Estadísticas detalladas</span>
+                                <span class="module-feature">Sugerencias de mejora</span>
+                                <span class="module-feature">Monitoreo 24/7</span>
+                            </div>
+                            <a href="#" class="module-link">Activar CamarAI Maps</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Sección de Ubicaciones -->
+            <section class="section-style" aria-labelledby="ubicaciones-heading">
+                <h2 id="ubicaciones-heading">Ubicaciones</h2>
+                <div class="section-actions">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Buscar ubicaciones..." aria-label="Buscar ubicaciones">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="filter-container">
+                        <select class="location-filter" aria-label="Filtrar por grupo">
+                            <option value="all">Todos los grupos</option>
+                            <option value="madrid">Madrid</option>
+                            <option value="barcelona">Barcelona</option>
+                            <option value="valencia">Valencia</option>
+                        </select>
+                    </div>
+                    <button class="action-button primary" id="add-location-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                        </svg>
+                        Añadir ubicación
+                    </button>
+                </div>
+
+                <div class="location-grid">
+                    <!-- Ubicación 1 -->
+                    <article class="location-card">
+                        <div class="location-header">
+                            <div class="location-status active"></div>
+                            <div class="location-actions">
+                                <button class="location-action-btn" aria-label="Editar ubicación">
+                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                    </svg>
+                                </button>
+                                <button class="location-action-btn" aria-label="Eliminar ubicación">
+                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <h3 class="location-name">Restaurante Central</h3>
+                        <p class="location-address">Calle Gran Vía 41, Madrid</p>
+                        <div class="location-details">
+                            <div class="location-detail">
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                </svg>
+                                <span>+34 912 456 789</span>
+                            </div>
+                            <div class="location-detail">
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                </svg>
+                                <span>central@restaurante.es</span>
+                            </div>
+                        </div>
+                        <div class="location-modules">
+                            <span class="location-module">TPV</span>
+                            <span class="location-module">Tienda Online</span>
+                            <span class="location-module">Reservas</span>
+                        </div>
+                        <a href="#" class="location-link">Ver detalles</a>
+                    </article>
+
+                    <!-- Ubicación 2 -->
+                    <article class="location-card">
+                        <div class="location-header">
+                            <div class="location-status active"></div>
+                            <div class="location-actions">
+                                <button class="location-action-btn" aria-label="Editar ubicación">
+                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                    </svg>
+                                </button>
+                                <button class="location-action-btn" aria-label="Eliminar ubicación">
+                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <h3 class="location-name">La Terraza</h3>
+                        <p class="location-address">Paseo Marítimo 22, Barcelona</p>
+                        <div class="location-details">
+                            <div class="location-detail">
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                </svg>
+                                <span>+34 933 456 123</span>
+                            </div>
+                            <div class="location-detail">
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                </svg>
+                                <span>terraza@restaurante.es</span>
+                            </div>
+                        </div>
+                        <div class="location-modules">
+                            <span class="location-module">TPV</span>
+                            <span class="location-module">Reservas</span>
+                            <span class="location-module">QR Ordering</span>
+                        </div>
+                        <a href="#" class="location-link">Ver detalles</a>
+                    </article>
+
+                    <!-- Ubicación 3 -->
+                    <article class="location-card">
+                        <div class="location-header">
+                            <div class="location-status inactive"></div>
+                            <div class="location-actions">
+                                <button class="location-action-btn" aria-label="Editar ubicación">
+                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                    </svg>
+                                </button>
+                                <button class="location-action-btn" aria-label="Eliminar ubicación">
+                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <h3 class="location-name">Café Norte</h3>
+                        <p class="location-address">Alameda Principal 5, Valencia</p>
+                        <div class="location-details">
+                            <div class="location-detail">
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                </svg>
+                                <span>+34 963 789 456</span>
+                            </div>
+                            <div class="location-detail">
+                                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                </svg>
+                                <span>norte@restaurante.es</span>
+                            </div>
+                        </div>
+                        <div class="location-modules">
+                            <span class="location-module">TPV</span>
+                        </div>
+                        <a href="#" class="location-link inactive">Ver detalles</a>
+                    </article>
+                </div>
+
+                <!-- Paginación -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <span class="pagination-text">Página 1 de 1</span>
+                    <button class="pagination-btn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="src/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</body>
+</html> 
